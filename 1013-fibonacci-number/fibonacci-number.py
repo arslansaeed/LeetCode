@@ -1,7 +1,18 @@
 class Solution:
-    def fib(self, n: int) -> int:
+    def fib_recur(self, n: int) -> int:
         if n <= 1:
             return n
 
         return self.fib(n-1) + self.fib(n-2)
+        
+    def fib(self, n: int) -> int:
+        if n <= 1:
+            return n
+
+        pre, curr = 0, 1
+        for i in range (2, n + 1):
+            pre ,  curr = curr, curr+pre
+
+        return curr 
+
         
