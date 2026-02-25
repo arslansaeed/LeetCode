@@ -11,7 +11,7 @@ class Solution:
         return self.fib(n-1) + self.fib(n-2)
         
     # solved using sliding window
-    def fib_sliding (self, n: int) -> int:
+    def fib(self, n: int) -> int:
         if n <= 1:
             return n
 
@@ -22,7 +22,7 @@ class Solution:
         return curr 
 
     # solved using tabulation - bottom up dp
-    def fib(self, n: int) -> int:
+    def fib_tabulation(self, n: int) -> int:
         if n <= 1:
             return n
 
