@@ -1,5 +1,6 @@
 class Solution:
-    def rob(self, nums: List[int]) -> int:
+    # with db -memorization
+    def rob_dp(self, nums: List[int]) -> int:
         n  = len(nums)
         memo = {}
 
@@ -20,6 +21,32 @@ class Solution:
 
         return dfs(0)
 
+    # time out with out dp
+    def rob_dfs(self, nums: List[int]) -> int:
+        n  = len(nums)
+       
+        def dfs(idx: int):
+            if idx >=  n:
+                return 0
+            
+            robbed = nums[idx] + dfs(idx +2)
+            skipped  = dfs(idx+1)
+
+            return max(robbed, skipped)
+
+        return dfs(0)
+
+    # dfs with tabulation
+    def rob(self, nums: List[int]) -> int:
+        n  = len(nums)
+
+        prev1 , prev2 = 0, 0
+        for num in nums:
+            curr = max(num + prev2, prev1)
+            prev2 =prev1
+            prev1 = curr
+
+        return prev1
 
 
 
