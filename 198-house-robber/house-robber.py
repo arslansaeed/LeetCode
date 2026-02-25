@@ -7,9 +7,6 @@ class Solution:
             if idx >=  n:
                 return 0
 
-            # if memo.get(idx, 0):
-            #     return memo[idx]
-
             if idx in memo:
                 return memo[idx]
 
