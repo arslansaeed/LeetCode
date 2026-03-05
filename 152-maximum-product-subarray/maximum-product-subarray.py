@@ -1,5 +1,5 @@
 class Solution:
-    def maxProduct(self, nums: List[int]) -> int:
+    def maxProduct_our(self, nums: List[int]) -> int:
         n = len(nums)
         r_pro = 1
         output = float('-inf')
@@ -10,6 +10,16 @@ class Solution:
 
         return output
 
+    def maxProduct(self, nums: List[int]) -> int:
+        n = len(nums)
+        r_pro = 1
+        output = nums[0]
+
+        for i in range(1, n):
+            r_pro = max(nums[i], r_pro * num[i])
+            output = max(output, r_pro)
+
+        return output
         
 
 
