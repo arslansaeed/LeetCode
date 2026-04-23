@@ -1,28 +1,20 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
+        paranthesis = {
+            ')': '(',
+            '}' : '{',
+            ']' :'['
+            }
+
         for i in range(len(s)):
-            if s[i] == '(' or s[i] =='{' or s[i] == '[':
-                stack.append(s[i])
+            if s[i] not in paranthesis:
+                stack.append(s[i])        
 
-            elif (s[i] == ')' or s[i] =='}' or s[i] == ']') and len(stack) == 0:
+            elif len(stack) > 0 and paranthesis[s[i]] == stack[-1]:
+                stack.pop() 
+            else:
                 return False
-
-            elif s[i] == ')': 
-                if stack[-1] == '(':
-                    stack.pop()
-                else:
-                    return False
-            elif s[i] == '}':
-                if stack[-1] == '{':
-                    stack.pop()
-                else:
-                    return False
-            elif s[i] == ']':
-                if stack[-1] == '[':
-                    stack.pop()
-                else:
-                    return False
 
         return len(stack) == 0
 
