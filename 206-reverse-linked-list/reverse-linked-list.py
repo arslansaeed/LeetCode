@@ -4,54 +4,23 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:        
+
+        if not head or not head.next:
             return head
 
-        curr = head
-        next_node  = None
-        prev = None
-        
-        while curr:
-            next_node = curr.next
-            curr.next = prev
-            prev = curr
-            curr = next_node
+        new_head = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
 
-        return prev
-
-
-        
-
-        
-
-        
+        return new_head
 
 
 
 
+       
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    def reverseList_old(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def reverseList_iterative(self, head: Optional[ListNode]) -> Optional[ListNode]:
 
         if not head:
             return head
