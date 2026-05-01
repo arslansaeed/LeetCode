@@ -19,6 +19,8 @@ class Solution:
             if (not node.left) and (not node.right):
                 if local_sum == targetSum:
                     output.append(path[:])
+                    # we can remove below 2 line and let it run line 26,27 and do pop as
+                    # return at line 12-13 will run quickly that solution is also fine
                     path.pop()
                     return
                     
