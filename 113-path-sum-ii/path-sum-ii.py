@@ -19,6 +19,8 @@ class Solution:
             if (not node.left) and (not node.right):
                 if local_sum == targetSum:
                     output.append(path[:])
+                    path.pop()
+                    return
                     
             dfs(node.left, local_sum,path)            
             dfs(node.right, local_sum,path)
@@ -31,33 +33,3 @@ class Solution:
  
         return output
 
-
-class Solution:
-    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
-
-        output = []
-
-        def dfs(node, current_sum, path):
-
-            if not node:
-                return
-
-            # choose
-            path.append(node.val)
-            current_sum += node.val
-
-            # leaf node
-            if not node.left and not node.right:
-                if current_sum == targetSum:
-                    output.append(path[:])
-
-            # explore
-            dfs(node.left, current_sum, path)
-            dfs(node.right, current_sum, path)
-
-            # un-choose (backtrack)
-            path.pop()
-
-        dfs(root, 0, [])
-
-        return output
