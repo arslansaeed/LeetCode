@@ -33,11 +33,9 @@ class Solution:
             #base case            
             if r >= n:
                 return output
-
             
             output  = merge2(output, lists[r])  
             #print(output)          
-            return merge(output,r+1)  
-                
+            return merge(output,r+1)                 
 
         return merge(lists[0] ,1)
