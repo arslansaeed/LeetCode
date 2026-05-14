@@ -4,7 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def mergeTwoLists_recursion(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
        
         if not list1:
             return list2
@@ -21,7 +21,7 @@ class Solution:
             return list2
 
    
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeTwoLists_iterative(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         
         list3 = curr = ListNode()
         if not list1:
@@ -42,7 +42,7 @@ class Solution:
                 curr.next = list2  
                 curr = curr.next
                 list2 = list2.next
-                
+
         curr.next = list1 if list1 else list2
 
         return list3.next
