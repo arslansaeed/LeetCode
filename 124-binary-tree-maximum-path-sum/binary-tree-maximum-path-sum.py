@@ -12,6 +12,23 @@ class Solution:
             if not root:
                 return 0
             
+            l_val  = max(0, dfs(root.left))
+            r_val = max(0 , dfs(root.right))
+
+            self.max_sum = max(self.max_sum, root.val + l_val + r_val )
+            return max( root.val + l_val, root.val + r_val)
+
+        dfs(root)
+        return self.max_sum
+
+
+    def maxPathSum_first_attempt(self, root: Optional[TreeNode]) -> int:
+        self.max_sum  = float('-inf')
+         
+        def dfs(root):
+            if not root:
+                return 0
+            
             l_val  = dfs(root.left)
             r_val = dfs(root.right)
 
