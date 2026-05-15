@@ -13,14 +13,33 @@ class Solution:
                 return
 
             if not node.left and not node.right:                
-                self.sum += int(local_sum + str(node.val))  
+                self.sum += local_sum * 10 + node.val
                 return     
 
-            local_sum = local_sum + str(node.val)   
+            local_sum = local_sum * 10 + node.val
             dfs(node.left, local_sum)
             dfs(node.right, local_sum)
 
-        dfs(root, "")
+        dfs(root, 0)
         return self.sum
+        
+
+    # def sumNumbers_str(self, root: Optional[TreeNode]) -> int:
+    #     self.sum = 0
+    #     def dfs(node, local_sum):
+    #         # base condition
+    #         if not node:
+    #             return
+
+    #         if not node.left and not node.right:                
+    #             self.sum += int(local_sum + str(node.val))  
+    #             return     
+
+    #         local_sum = local_sum + str(node.val)   
+    #         dfs(node.left, local_sum)
+    #         dfs(node.right, local_sum)
+
+    #     dfs(root, "")
+    #     return self.sum
         
         
