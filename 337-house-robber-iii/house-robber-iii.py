@@ -17,10 +17,9 @@ class Solution:
 
             curr_val = node.val + left[1] + right[1]
             child_val = max(left[0], left[1]) + max (right[0], right[1])
-            return [curr_val, child_val]
-            
-        root_val= dfs(root)
-        return max(root_val[0], root_val[1])
+            return [curr_val, child_val]            
+
+        return max(dfs(root))
 
 
 
