@@ -23,8 +23,7 @@ class Solution:
             slow = root
             fast = root
             #temp = ListNode()
-            temp = None
-            print(f"before while")
+            temp = None          
           
             #calculate mid
             while fast and fast.next:
@@ -33,12 +32,10 @@ class Solution:
                 fast = fast.next.next               
 
             temp.next = None
-            node  =  TreeNode(slow.val)
-            print(node.val)
+            node  =  TreeNode(slow.val)           
 
             node.left = dfs(root)
-            node.right = dfs(slow.next)
-            
+            node.right = dfs(slow.next)            
 
             return node
 
