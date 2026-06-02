@@ -10,7 +10,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
+    def sortedListToBST_ours(self, head: Optional[ListNode]) -> Optional[TreeNode]:
 
         def dfs(root):
             #base condition
@@ -40,3 +40,37 @@ class Solution:
             return node
 
         return dfs(head)
+
+    def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
+        # Count length of linked list
+        size = 0
+        curr = head
+
+        while curr:
+            size += 1
+            curr = curr.next
+
+        self.head = head
+
+        def build_tree(left: int, right: int) -> Optional[TreeNode]:
+            if left > right:
+                return None
+
+            mid = (left + right) // 2
+
+            # Build left subtree first
+            left_child = build_tree(left, mid - 1)
+
+            # Current linked list node becomes root
+            root = TreeNode(self.head.val)
+            root.left = left_child
+
+            # Move linked list pointer forward
+            self.head = self.head.next
+
+            # Build right subtree
+            root.right = build_tree(mid + 1, right)
+
+            return root
+
+        return build_tree(0, size - 1)
