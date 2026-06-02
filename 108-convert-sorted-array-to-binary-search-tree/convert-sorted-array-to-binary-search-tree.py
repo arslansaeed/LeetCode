@@ -21,26 +21,3 @@ class Solution:
 
         return dfs(0,len(nums) -1)
 
-
-
-    # def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
-
-    #     def recursion ( l, r):
-    #         #base case
-    #         if l > r:
-    #             return 
-
-    #         mid  = (l+r)//2
-    #         root  = TreeNode(nums[mid])
-    #         root.left = recursion(l, mid -1)
-    #         root.right = recursion(mid+1, r)
-
-    #         return root
-
-    #    #print(len(nums)-1)
-    #     return recursion(0,len(nums)-1)
-
-
-
-
-        
