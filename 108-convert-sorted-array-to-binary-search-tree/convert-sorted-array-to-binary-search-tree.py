@@ -7,19 +7,56 @@
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
 
-        def recursion (nums, l, r):
-            #base case
-            if l > r:
-                return 
+        def dfs(start, end):
+            #base condition
+            if start > end:
+                return None
 
-            mid  = (l+r)//2
-            root  = TreeNode(nums[mid])
-            root.left = recursion(nums, l, mid -1)
-            root.right = recursion(nums, mid+1, r)
+            mid  = (start + end )// 2
+            root = TreeNode(nums[mid])
+            root.left = dfs(start, mid -1)
+            root.right = dfs(mid+ 1, end)
 
             return root
 
-        return recursion(nums,0,len(nums)-1)
+        return dfs(0,len(nums) -1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+
+    #     def recursion ( l, r):
+    #         #base case
+    #         if l > r:
+    #             return 
+
+    #         mid  = (l+r)//2
+    #         root  = TreeNode(nums[mid])
+    #         root.left = recursion(l, mid -1)
+    #         root.right = recursion(mid+1, r)
+
+    #         return root
+
+    #    #print(len(nums)-1)
+    #     return recursion(0,len(nums)-1)
 
 
 
