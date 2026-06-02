@@ -12,7 +12,7 @@ class Solution:
             if start > end:
                 return None
 
-            mid  = (start + end + 1) // 2
+            mid  = (start + end) // 2
             root = TreeNode(nums[mid])
             root.left = dfs(start, mid -1)
             root.right = dfs(mid+ 1, end)
