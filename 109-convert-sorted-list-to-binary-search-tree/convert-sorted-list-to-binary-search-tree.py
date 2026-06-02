@@ -10,7 +10,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def sortedListToBST_ours(self, head: Optional[ListNode]) -> Optional[TreeNode]:
+    def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
 
         def dfs(root):
             #base condition
@@ -41,7 +41,7 @@ class Solution:
 
         return dfs(head)
 
-    def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
+    def sortedListToBST_chat(self, head: Optional[ListNode]) -> Optional[TreeNode]:
         # Count length of linked list
         size = 0
         curr = head
