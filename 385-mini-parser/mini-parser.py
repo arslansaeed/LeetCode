@@ -42,7 +42,7 @@
 #        """
 
 class Solution:
-    def deserialize(self, s: str) -> NestedInteger:
+    def deserialize_iterative(self, s: str) -> NestedInteger:
         stack = []       
         num =""
 
@@ -73,8 +73,52 @@ class Solution:
             else:
                 num += ch
 
-            # print(num)
-            # print(stack)
+    def deserialize(self, s: str) -> NestedInteger:     
+        num =""
+
+        if s[0] != "[":
+            return NestedInteger(int(s))
+
+        n = len(s)
+        def dfs(i, nestedInteger, num):  
+            #base condition
+            if i > n-1:
+                return nestedInteger, i
+
+            ch = s[i]
+
+            if ch == "[":
+                # stack.append(NestedInteger())  
+                next_list, next_i =  dfs(i+1 , NestedInteger(), "")   
+              
+                if nestedInteger:
+                    nestedInteger.add(next_list)  
+             
+                return dfs(next_i  , nestedInteger, "")  
+
+            elif ch == "]":             
+                if num:    
+                    nestedInteger.add(NestedInteger(int(num)))
+                    num = ""
+                
+                return nestedInteger, i+1  
+               
+            elif ch == ",": 
+                if num:               
+                    nestedInteger.add(NestedInteger(int(num)))
+                    num = ""
+
+                return  dfs(i+1, nestedInteger, num)   
+                                
+            else:
+                num += ch
+                return dfs(i+1, nestedInteger, num) 
+              
+
+          
+
+        result, _ = dfs(1, NestedInteger(), "")
+        return result
 
 
 
