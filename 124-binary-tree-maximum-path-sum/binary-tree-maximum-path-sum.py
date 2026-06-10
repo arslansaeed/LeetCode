@@ -16,10 +16,9 @@ class Solution:
             left_val = max(0, dfs(node.left))
             right_val = max(0, dfs(node.right))
 
-            self.max_path_val = max(self.max_path_val, node.val + left_val + right_val )
+            self.max_path_val = max(self.max_path_val,node.val + left_val + right_val )
             return max( node.val+ left_val, node.val + right_val)
-           
-
+            
         dfs(root)
         return  self.max_path_val
 
