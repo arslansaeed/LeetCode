@@ -13,21 +13,12 @@ class Solution:
             if not node:
                 return 0
 
-            # left_val = dfs(node.left)
-            # right_val = dfs(node.right)
-
             left_val = max(0, dfs(node.left))
             right_val = max(0, dfs(node.right))
 
-            # max path sum till that node
-            # node_max_val = max((node.val + left_val + right_val), node.val, node.val+ left_val, node.val + right_val)
-            # self.max_path_val = max(self.max_path_val,node_max_val )
-
-            node_max_val = node.val + left_val + right_val
-            self.max_path_val = max(self.max_path_val,node_max_val )
-
-            sub_path_val = max( node.val+ left_val, node.val + right_val)
-            return sub_path_val
+            self.max_path_val = max(self.max_path_val, node.val + left_val + right_val )
+            return max( node.val+ left_val, node.val + right_val)
+           
 
         dfs(root)
         return  self.max_path_val
