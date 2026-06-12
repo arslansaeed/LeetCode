@@ -42,16 +42,15 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
-        node_val = data.split(',')
-        n = len(node_val)
+        node_val = data.split(',')      
 
         def dfs(i):    
             if node_val[i] == "null":
-                return (None, i)
+                return (None, i+1)
 
             node  = TreeNode(int(node_val[i]))
             node.left, i = dfs(i+1)
-            node.right, i = dfs(i+1)
+            node.right, i = dfs(i)
 
             return (node,i)
 
