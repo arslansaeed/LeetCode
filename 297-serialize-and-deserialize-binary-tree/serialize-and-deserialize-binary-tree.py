@@ -32,7 +32,7 @@ class Codec:
 
 
         dfs(root)   
-        print(self.serialize_string) 
+        #print(self.serialize_string) 
         return self.serialize_string
         
 
@@ -46,11 +46,11 @@ class Codec:
 
         def dfs(i):    
             if node_val[i] == "null":
-                return (None, i+1)
+                return (None, i)
 
             node  = TreeNode(int(node_val[i]))
             node.left, i = dfs(i+1)
-            node.right, i = dfs(i)
+            node.right, i = dfs(i+1)
 
             return (node,i)
 
