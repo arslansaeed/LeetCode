@@ -3,39 +3,46 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-class Solution:
+class Solution:   
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        #print(lists)
-       
-        if not lists:
-            return None
-
-        n = len(lists)
-        if n < 2:
-            return lists[0]
-
-        def merge2(cl, cr):
-            if not cl:
-                return cr
-
-            elif not cr:
-                return cl
-
-            if cl.val <= cr.val:
-                cl.next = merge2(cl.next, cr)
-                return cl
-            elif cl.val > cr.val:
-                cr.next = merge2(cr.next,cl)
-                return cr
-        
-
-        def merge(output, r):
-            #base case            
-            if r >= n:
-                return output
+        def dfs(a,b):
+            if not a:
+                return b
             
-            output  = merge2(output, lists[r])  
-            #print(output)          
-            return merge(output,r+1)                 
+            elif not b:
+                return a
 
-        return merge(lists[0] ,1)
+            else:
+                #curr = a
+                if a.val <= b.val:
+                    a.next = dfs(a.next,b)
+                    return a
+                else:
+                    b.next = dfs(a,b.next)
+                    return b
+
+
+        n  = len(lists)
+        if n == 0:
+            return None
+        elif n <2:
+            return lists[0]
+       
+        output = lists[0]
+        for i in range(1,n):
+            output = dfs(output, lists[i])
+
+        return output
+
+
+   
+
+
+            
+
+
+
+
+     
+
+        
