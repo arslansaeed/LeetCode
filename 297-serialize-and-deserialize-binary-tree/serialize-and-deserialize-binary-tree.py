@@ -7,49 +7,49 @@
 
 class Codec:
 
-    def serialize(self, root):
-        """Encodes a tree to a single string.
-        
-        :type root: TreeNode
-        :rtype: str
-        """
-        self.serialize_string  = ""
-        def dfs(node):
-            #base condition
-            if not node:
-                if self.serialize_string == "": 
-                    self.serialize_string +=  "null"
-                else:
-                    self.serialize_string += ",null"
-                return 
-
-            if self.serialize_string == "": 
-                self.serialize_string +=  str(node.val)    
-            else:
-                self.serialize_string += "," + str(node.val)     
-
-            dfs(node.left)          
-            dfs(node.right)
-
-
-        dfs(root)   
-        #print(self.serialize_string) 
-        return self.serialize_string
-    
     # def serialize(self, root):
-    #     values = []
-
+    #     """Encodes a tree to a single string.
+        
+    #     :type root: TreeNode
+    #     :rtype: str
+    #     """
+    #     self.serialize_string  = ""
     #     def dfs(node):
+    #         #base condition
     #         if not node:
-    #             values.append("null")
-    #             return
+    #             if self.serialize_string == "": 
+    #                 self.serialize_string +=  "null"
+    #             else:
+    #                 self.serialize_string += ",null"
+    #             return 
 
-    #         values.append(str(node.val))
-    #         dfs(node.left)
+    #         if self.serialize_string == "": 
+    #             self.serialize_string +=  str(node.val)    
+    #         else:
+    #             self.serialize_string += "," + str(node.val)     
+
+    #         dfs(node.left)          
     #         dfs(node.right)
 
-    #     dfs(root)
-    #     return ",".join(values)
+
+    #     dfs(root)   
+    #     #print(self.serialize_string) 
+    #     return self.serialize_string
+    
+    def serialize(self, root):
+        values = []
+
+        def dfs(node):
+            if not node:
+                values.append("null")
+                return
+
+            values.append(str(node.val))
+            dfs(node.left)
+            dfs(node.right)
+
+        dfs(root)
+        return ",".join(values)
         
 
     def deserialize(self, data):
