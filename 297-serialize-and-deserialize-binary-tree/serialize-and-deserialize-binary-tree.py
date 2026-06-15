@@ -15,6 +15,7 @@ class Codec:
         """
         self.serialize_string  = ""
         def dfs(node):
+            #base condition
             if not node:
                 if self.serialize_string == "": 
                     self.serialize_string +=  "null"
@@ -34,14 +35,29 @@ class Codec:
         dfs(root)   
         #print(self.serialize_string) 
         return self.serialize_string
+    
+    # def serialize(self, root):
+    #     values = []
+
+    #     def dfs(node):
+    #         if not node:
+    #             values.append("null")
+    #             return
+
+    #         values.append(str(node.val))
+    #         dfs(node.left)
+    #         dfs(node.right)
+
+    #     dfs(root)
+    #     return ",".join(values)
         
 
     def deserialize(self, data):
-        """Decodes your encoded data to tree.
+    #     """Decodes your encoded data to tree.
         
-        :type data: str
-        :rtype: TreeNode
-        """
+    #     :type data: str
+    #     :rtype: TreeNode
+    #     """
         node_val = data.split(',')      
 
         def dfs(i):    
