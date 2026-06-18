@@ -5,7 +5,7 @@
 #         def dfs(expression):
            
 #             if expression.isdigit():
-#                 return int(expression)
+#                 return [int(expression)]
 
 #             result_val = 0
 #             for i, ch in enumerate(expression):
@@ -16,6 +16,8 @@
 
 #                     left_result = dfs(expression[:i])
 #                     right_result = dfs(expression[i + 1:])
+
+
 #                     if ch == "+":
 #                         result_val  = left_result + right_result
 #                     elif ch == "-":
