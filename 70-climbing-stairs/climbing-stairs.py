@@ -1,40 +1,24 @@
 class Solution:
-    # def climbStairs(self, n: int) -> int:
-    #     count  = 0
-        
-    #     def backtrack(num: int):
-    #         nonlocal count
-    #         if num == 0:
-    #             count += 1
-    #             return                
-
-    #         if num < 0:
-    #             return
-
-    #         backtrack(num -1)
-    #         backtrack(num - 2)
-
-    #     backtrack(n)
-    #     return count
-
-    
     def climbStairs(self, n: int) -> int:
-        #count  = 0
-        
-        @lru_cache(None)
-        def backtrack(num: int):
-            #nonlocal count
-            if num == 0:
-                return 1               
 
-            if num < 0:
+        dp = {}
+
+        def dfs(rem_steps):
+           
+
+            # base condition
+            if rem_steps == 0:              
+                return 1
+            
+            if rem_steps < 0:
                 return 0
 
-           
-            return backtrack(num -1) + backtrack(num - 2)
-            
+            if rem_steps in dp:
+                return dp[rem_steps]
 
-        return backtrack(n)
+            dp[rem_steps] = dfs(rem_steps -1) +  dfs(rem_steps -2)
+            return dp[rem_steps]
+                
 
-
-    
+        return dfs(n)
+   
