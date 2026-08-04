@@ -2,6 +2,31 @@ class Solution:
     def climbStairs(self, n: int) -> int:
 
         dp = {}
+        def dfs(rem_steps):            
+
+            # base condition
+            if rem_steps == 0:                
+                return 1
+            
+            if rem_steps < 0:
+                return 0
+
+            if rem_steps in dp:
+                return dp[rem_steps]
+
+            one_step = dfs(rem_steps -1) 
+            two_step = dfs(rem_steps -2)
+
+            dp[rem_steps] =  one_step + two_step
+            return dp[rem_steps]
+
+        return dfs(n)
+
+
+
+
+    def climbStairs_one_step(self, n: int) -> int:
+        dp = {}
 
         def dfs(rem_steps):
            
@@ -21,4 +46,3 @@ class Solution:
                 
 
         return dfs(n)
-   
