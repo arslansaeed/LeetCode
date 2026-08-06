@@ -8,7 +8,7 @@ class Solution:
                 return True
 
             if idx in db:
-                print(f"db in base condition : {db}")
+                #print(f"db in base condition : {db}")
                 return db[idx]
 
 
@@ -20,7 +20,7 @@ class Solution:
                         return True
 
             db[idx] = False
-            print(f"db when match is not successful : {db}")
+            #print(f"db when match is not successful : {db}")
             return False                    
 
         return dfs(0)
