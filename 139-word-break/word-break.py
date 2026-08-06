@@ -15,7 +15,7 @@ class Solution:
             for word in wordDict:
                 if s.startswith(word, idx):                      
                     if dfs(idx + len(word)):
-                        #db[idx] = True
+                        db[idx] = True
                         #print(f"db when match is successful : {db}")
                         return True
 
