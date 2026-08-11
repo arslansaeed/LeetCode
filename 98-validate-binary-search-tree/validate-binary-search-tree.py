@@ -12,7 +12,9 @@ class Solution:
             if not node:
                 return True
 
-            if not (left_bound < node.val < right_bound):
+            # if not (left_bound < node.val < right_bound):
+            #     return False
+            if  ((left_bound >= node.val)  or  (node.val >= right_bound)):
                 return False
 
             return (dfs(node.left, left_bound, node.val) and
